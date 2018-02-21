@@ -35,9 +35,9 @@ class Literature(Item):
         self.contents = contents
 
 
-class Flashlight(Item):
+class Lamp(Item):
     def __init__(self, name, battery_level = 100, state = "off"):
-        item.__init__(self, name)
+        Item.__init__(self, name)
         self.battery_level = battery_level
 
     def turn_on(self):
@@ -48,7 +48,7 @@ class Flashlight(Item):
 
     def change_batteries(self):
         self.battery_level = 100
-        
+
     def conpute_usage(selfs):
         # Compute the time it's been on and then drain the battery and equal amount
         pass
