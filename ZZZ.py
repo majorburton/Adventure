@@ -1,6 +1,5 @@
 from Adventure import Room
 from inventory import Inventory
-from inventory import Item
 
 
 Field = Room('Field', 'You are in the middle of a small open field with a giant forest all around you. In your right hand is a brown teddy bear. On your back is a light pink bag.', 'f')
@@ -8,10 +7,10 @@ Fenced_Off_Forest_e = Room('Fenced off forest', 'There is a wooden fence blockin
 Fenced_Off_Forest_w = Room('Fenced off forest', 'There is a wooden fence blocking the way into the forest. Along the fence is a walkway. It seems to go around the entire field', 'fof')
 Fenced_Off_Forest_s = Room('Fenced off forest', 'There is a wooden fence blocking the way into the forest. Along the fence is a walkway. It seems to go around the entire field. On the ground you can see a small bird made of gold with a crack in the head of it.', 'fof')
 Forest_Entrance = Room('Forest Entrance', 'You approach a small gate leading into the forest. There is a note nailed to the gate and a lamp hooked onto the side. A small pink hammer can be seen poking out the grass on the ground.', 'fe')
-Branched_Forest = Room('Branched Forest', 'There are 3 paths branching out in different directions: one to the east, one to the west, and one to the north with a piece of paper at the begining of every path.', 'df')
-hallway2 = Room('upstairs hallway', 'you are in the hallway', 'uh')
-bedroom1 = Room('bedroom', 'you are in the bedroom', 'b1')
-bedroom2 = Room('bedroom', 'you are in the bedroom', 'b2')
+Branched_Forest = Room('Branched Forest', 'There are 3 paths branching out in different directions: one to the east, one to the west, and one to the north with a small note at the begining of every path.', 'df')
+North_path_e = Room('North Pathway Entrance', 'The pathway leads off into the forest and a small note can be seen nailed to a tree.', 'npe')
+West_path_e = Room('West Pathway Entrance', 'The pathway leads off into the forest and you can see a small fire down the pathway. There is also another note nailed to a tree.', 'wpe')
+East_path_e = Room('East Pathway Entrance', 'Looking down the eastern pathway you can see some mossy stones. To the left of you is another note.', 'epe')
 bedroom3 = Room('bedroom', 'you are in the bedroom', 'b3')
 Living = Room('living room', 'you are in the living room', 'lr')
 
@@ -28,9 +27,12 @@ Fenced_Off_Forest_w.add_connection(Fenced_Off_Forest_s, "walkway along the fence
 Fenced_Off_Forest_s.add_connection(Field, "thing pathway", ["back to the center of the field.", "n"])
 Fenced_Off_Forest_s.add_connection(Fenced_Off_Forest_e, "walkway along the fence leading to the left,", ["to the east side of the field.", "e"])
 Fenced_Off_Forest_s.add_connection(Fenced_Off_Forest_w, "walkway along the fence leading to the right,", ["to the west side of the field.", "w"])
-Forest_Entrance.add_connection(Field, "Broken fence", ["south", "s"])
-Forest_Entrance.add_connection(Branched_Forest, "Pathway", ["north", "n"])
-Branched_Forest.add_connection(Forest_Entrance, "Pathway", ["south", "s"])
+Forest_Entrance.add_connection(Field, "small gate", ["into the forest.", "s"])
+Forest_Entrance.add_connection(Branched_Forest, "clear path", ["deeper into the forest.", "n"])
+Branched_Forest.add_connection(Forest_Entrance, "clear path", ["back to the forest entrance.", "s"])
+Branched_Forest.add_connection(North_path_e, "fairly small path", ["further into the forest.", "s"])
+Branched_Forest.add_connection(West_path_e, "large winding path", ["a faint fire.", "s"])
+Branched_Forest.add_connection(East_path_e, "downwards pathway", ["some mossy bricks.", "s"])
 
 #Forest_Entrance.add_item(note())
 #Forest_Entrance.add_item(lamp())
@@ -54,7 +56,7 @@ while True:
         print result
         continue
     else:
-        print "I don't know what you mean."
+        print "Remember to use a valid command please and thank you."
 
 
 #dining.add_room('s', kitchen)

@@ -22,7 +22,6 @@ class Item():
         return self.name
 
 
-
 class Literature(Item):
     def __init__(self, name, contents = "This item is blank."):
         Item.__init__(self, name)
@@ -49,7 +48,7 @@ class Lamp(Item):
     def change_batteries(self):
         self.battery_level = 100
 
-    def conpute_usage(selfs):
+    def compute_usage(self):
         # Compute the time it's been on and then drain the battery and equal amount
         pass
 
