@@ -51,14 +51,13 @@ while True:
     result = current_room.process_command(command, inventory)
     if isinstance(result, Room):
         current_room = result
+        result.enter_room()
         continue
     elif isinstance(result, str):
-        print (result)
+        print result
         continue
-
-    result = inventory.process_command(command)
-    if len(result) == 0:
-        print ("I don't know what you mean.")
+    else:
+        print "Remember to use a valid command please and thank you."
 
 
 #dining.add_room('s', kitchen)
