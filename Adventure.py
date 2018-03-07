@@ -28,7 +28,6 @@ class Room():
                 print "There is a " + connector[0] + \
                       " that goes " + connector[1]
 
-
     def get_name(self):
         return self.name
 
@@ -37,7 +36,6 @@ class Room():
 
     def next_room(self, direction):
         return self.rooms[direction]
-
 
     def process_command(self, command, inventory):
         if command in self.rooms.keys():
@@ -53,5 +51,3 @@ class Room():
                     return "I don't know what you want to pick up."
         else:
             return None
-
-

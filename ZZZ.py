@@ -1,6 +1,7 @@
 from Adventure import Room
 from inventory import Inventory
-
+from inventory import Note_1
+from inventory import Literature
 
 Field = Room('Field', 'You are in the middle of a small open field with a giant forest all around you. In your right hand is a brown teddy bear. On your back is a light pink bag.', 'f')
 Fenced_Off_Forest_e = Room('Fenced off forest', 'There is a wooden fence blocking the way into the forest. Along the fence is a walkway. It seems to go around the entire field.', 'fof')
@@ -34,7 +35,7 @@ Branched_Forest.add_connection(North_path_e, "fairly small path", ["further into
 Branched_Forest.add_connection(West_path_e, "large winding path", ["a faint fire.", "s"])
 Branched_Forest.add_connection(East_path_e, "downwards pathway", ["some mossy bricks.", "s"])
 
-#Forest_Entrance.add_item(note())
+Forest_Entrance.add_item(Note_1(Literature))
 #Forest_Entrance.add_item(lamp())
 #Forest_Entrance.add_item(hammer())
 
@@ -50,13 +51,14 @@ while True:
     result = current_room.process_command(command, inventory)
     if isinstance(result, Room):
         current_room = result
-        result.enter_room()
         continue
     elif isinstance(result, str):
-        print result
+        print (result)
         continue
-    else:
-        print "Remember to use a valid command please and thank you."
+
+    result = inventory.process_command(command)
+    if len(result) == 0:
+        print ("I don't know what you mean.")
 
 
 #dining.add_room('s', kitchen)

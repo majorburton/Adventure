@@ -33,6 +33,10 @@ class Literature(Item):
     def self_contents(self, contents):
         self.contents = contents
 
+class Note_1(Literature):
+    def __init__(self, name, contents = "Wow I can't believe I finally made it. Gotta note this one."):
+        Item.__init__(self, name)
+        self.contents = contents
 
 class Lamp(Item):
     def __init__(self, name, battery_level = 100, state = "off"):
