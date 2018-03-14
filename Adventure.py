@@ -27,6 +27,10 @@ class Room():
             for connector in self.connectors:
                 print "There is a " + connector[0] + \
                       " that goes " + connector[1]
+            print
+            for item in self.items:
+                print ("You see a " + item.name + " here.")
+            print
 
     def get_name(self):
         return self.name

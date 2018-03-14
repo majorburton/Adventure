@@ -38,15 +38,15 @@ East_path_e.add_connection(Branched_Forest, "upwards pathway", ["back to the dif
 West_path_e.add_connection(Branched_Forest, "upwards pathway", ["back to the different pathways.", "e"])
 
 
-Forest_Entrance.add_item(Note_1(Literature))
+Forest_Entrance.add_item(Literature("Note", "Wow I can't believe I finally made it. Gotta note this one."))
 #Forest_Entrance.add_item(lamp())
 #Forest_Entrance.add_item(hammer())
 
 inventory = Inventory()
 current_room = Field
-current_room.enter_room()
 
 while True:
+    current_room.enter_room()
     command = raw_input("What would you like to do?  ")
     if command in ["exit", "x", "quit", "q"]:
         break
@@ -59,7 +59,8 @@ while True:
     elif isinstance(result, str):
         print result
         continue
-    else:
+    result = inventory.process_command(command)
+    if len(result) == 0:
         print "Remember to use a valid command please and thank you."
 
 #dining.add_room('s', kitchen)
@@ -76,15 +77,3 @@ while True:
 #bedroom3.add_room('e', hallway2)
 
 
-current_room = Field
-Field.enter_room()
-
-while True:
-    direction = raw_input("Where do you wish to go?  ")
-    if direction == 'x':
-        break
-    elif current_room.is_valid_direction(direction):
-        current_room = current_room.next_room(direction)
-        current_room.enter_room()
-    else:
-        print "Oof"

@@ -2,7 +2,6 @@ class Inventory():
     def __init__(self):
         self.items = []
 
-
     def add(self, item):
         self.items.append(item)
 
@@ -17,6 +16,7 @@ class Inventory():
 class Item():
     def __init__(self, name):
         self.name = name
+        self.known_commands = {}
 
     def get_name(self):
         return self.name
@@ -26,8 +26,9 @@ class Literature(Item):
     def __init__(self, name, contents = "This item is blank."):
         Item.__init__(self, name)
         self.contents = contents
+        self.known_commands["read"] = self.read
 
-    def read(self):
+    def read(self, command):
         print self.contents
 
     def self_contents(self, contents):
