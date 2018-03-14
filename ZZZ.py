@@ -31,9 +31,12 @@ Fenced_Off_Forest_s.add_connection(Fenced_Off_Forest_w, "walkway along the fence
 Forest_Entrance.add_connection(Field, "small gate", ["into the forest.", "s"])
 Forest_Entrance.add_connection(Branched_Forest, "clear path", ["deeper into the forest.", "n"])
 Branched_Forest.add_connection(Forest_Entrance, "clear path", ["back to the forest entrance.", "s"])
-Branched_Forest.add_connection(North_path_e, "fairly small path", ["further into the forest.", "s"])
-Branched_Forest.add_connection(West_path_e, "large winding path", ["a faint fire.", "s"])
-Branched_Forest.add_connection(East_path_e, "downwards pathway", ["some mossy bricks.", "s"])
+Branched_Forest.add_connection(North_path_e, "fairly small path", ["further into the forest.", "n"])
+Branched_Forest.add_connection(West_path_e, "large winding path", ["too a faint fire.", "w"])
+Branched_Forest.add_connection(East_path_e, "downwards pathway", ["too some mossy bricks.", "e"])
+East_path_e.add_connection(Branched_Forest, "upwards pathway", ["back to the different pathways.", "w"])
+West_path_e.add_connection(Branched_Forest, "upwards pathway", ["back to the different pathways.", "e"])
+
 
 Forest_Entrance.add_item(Note_1(Literature))
 #Forest_Entrance.add_item(lamp())
@@ -58,7 +61,6 @@ while True:
         continue
     else:
         print "Remember to use a valid command please and thank you."
-
 
 #dining.add_room('s', kitchen)
 #hallway.add_room('s', dining)
